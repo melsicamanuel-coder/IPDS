@@ -1,0 +1,21 @@
+.agent-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.agent-grid--multi {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1199px) {
+  .agent-grid--multi {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .agent-grid--multi {
+    grid-template-columns: 1fr;
+  }
+}
