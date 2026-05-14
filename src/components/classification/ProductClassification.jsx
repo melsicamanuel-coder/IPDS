@@ -1,92 +1,178 @@
-import { AGENTS, AGENT_ORDER } from '../../data/agents';
-import { getClassificationMeta } from '../../utils/classifier';
-import Button from '../shared/Button';
-import LoadingSpinner from '../shared/LoadingSpinner';
 import './ProductClassification.css';
 
-export default function ProductClassification({ classification, isLoading, error, onBegin }) {
+export default function ProductClassification({
+
+  classification,
+
+  isLoading,
+
+  error,
+
+  onBegin,
+
+}) {
+
   if (isLoading) {
+
     return (
-      <div className="classification-screen">
-        <div className="classification-loading fade-in">
-          <LoadingSpinner size={40} />
-          <p>Analyzing your product and classifying…</p>
-        </div>
+
+      <div className="product-classification">
+
+        <h1 className="product-classification__title">
+          Classifying Product...
+        </h1>
+
       </div>
+
     );
+
   }
 
   if (error) {
+
     return (
-      <div className="classification-screen">
-        <div className="classification-error fade-in">
-          <p>Classification failed: {error}</p>
-          <p>Please check your API key and try again.</p>
-        </div>
+
+      <div className="product-classification">
+
+        <h1 className="product-classification__title">
+          Classification Failed
+        </h1>
+
+        <p className="product-classification__description">
+          {error}
+        </p>
+
       </div>
+
     );
+
   }
 
   if (!classification) return null;
 
-  const meta = getClassificationMeta(classification.classification);
-  const fullCapacity = classification.agents_at_full_capacity || [];
-  const reducedCapacity = classification.agents_at_reduced_capacity || [];
+  const {
+
+    type,
+
+    summary,
+
+    intent,
+
+    targetUsers,
+
+    constraints,
+
+    agents,
+
+  } = classification;
 
   return (
-    <div className="classification-screen">
-      <div className="classification-card fade-in">
-        <div className="classification-badge" style={{ background: meta.color + '15', borderColor: meta.color + '40' }}>
-          <span className="classification-badge__dot" style={{ background: meta.color }} />
-          <span className="classification-badge__text" style={{ color: meta.color }}>{classification.classification}</span>
-        </div>
 
-        <h2 className="classification-title">Product Classified</h2>
-        <p className="classification-summary">{classification.summary}</p>
+    <div className="product-classification">
 
-        <div className="classification-meta">
-          <div className="classification-meta__row">
-            <span className="classification-meta__label">Product Intent</span>
-            <span className="classification-meta__value">{classification.product_intent}</span>
-          </div>
-          <div className="classification-meta__row">
-            <span className="classification-meta__label">Target Users</span>
-            <span className="classification-meta__value">{classification.target_users}</span>
-          </div>
-          <div className="classification-meta__row">
-            <span className="classification-meta__label">Key Constraints</span>
-            <span className="classification-meta__value">{classification.key_constraints}</span>
-          </div>
-        </div>
-
-        <div className="classification-agents">
-          <h3 className="classification-agents__title">Active Sub-Agents</h3>
-          <div className="classification-agents__grid">
-            {AGENT_ORDER.map((agentId) => {
-              const agent = AGENTS[agentId];
-              const isFull = fullCapacity.some(n => n.toLowerCase().includes(agentId) || agentId.includes(n.toLowerCase().split(' ')[0]));
-              const isReduced = !isFull;
-              return (
-                <div
-                  key={agentId}
-                  className={`agent-pill ${isFull ? 'agent-pill--full' : 'agent-pill--reduced'}`}
-                  style={{ borderColor: isFull ? agent.color : 'var(--border)' }}
-                >
-                  <span className="agent-pill__icon">{agent.icon}</span>
-                  <span className="agent-pill__name">{agent.shortName}</span>
-                  <span className={`agent-pill__status ${isFull ? 'agent-pill__status--full' : 'agent-pill__status--reduced'}`}>
-                    {isFull ? 'Full' : 'Reduced'}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <Button onClick={onBegin} size="lg">
-          Begin Phase 1 →
-        </Button>
+      <div className="product-classification__type">
+        {type || 'PRODUCT'}
       </div>
+
+      <h1 className="product-classification__title">
+        Product Classified
+      </h1>
+
+      <p className="product-classification__description">
+        {summary || 'No summary generated.'}
+      </p>
+
+      <div className="product-classification__details">
+
+        <div className="product-classification__row">
+
+          <div className="product-classification__label">
+            PRODUCT INTENT
+          </div>
+
+          <div className="product-classification__value">
+            {intent || 'Not generated'}
+          </div>
+
+        </div>
+
+        <div className="product-classification__row">
+
+          <div className="product-classification__label">
+            TARGET USERS
+          </div>
+
+          <div className="product-classification__value">
+
+            {targetUsers ||
+
+             classification.target_users ||
+
+             classification.users ||
+
+             'Target users not generated'}
+
+          </div>
+
+        </div>
+
+        <div className="product-classification__row">
+
+          <div className="product-classification__label">
+            KEY CONSTRAINTS
+          </div>
+
+          <div className="product-classification__value">
+            {constraints || 'No constraints generated'}
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="product-classification__agents">
+
+        <h2 className="product-classification__agents-title">
+          ACTIVE SUB-AGENTS
+        </h2>
+
+        <div className="product-classification__agent-list">
+
+          {(agents || []).map((agent, index) => (
+
+            <div
+              key={index}
+              className="product-classification__agent"
+            >
+
+              {agent.name}
+
+              <span>
+                {agent.mode}
+              </span>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+      <button
+
+        className="product-classification__button"
+
+        onClick={onBegin}
+
+      >
+
+        Begin Phase 1 →
+
+      </button>
+
     </div>
+
   );
+
 }

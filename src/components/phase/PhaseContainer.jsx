@@ -8,7 +8,7 @@ import './PhaseContainer.css';
 export default function PhaseContainer({
   phase,
   phaseStatus,
-  loadingAgents,
+ loadingAgents,
   outputs,
   errors,
   gateDecision,
@@ -17,20 +17,40 @@ export default function PhaseContainer({
   onRerun,
   runPhase,
 }) {
+
   const isReadOnly = !!gateDecision;
-  const isComplete = phaseStatus === 'complete' || phaseStatus === 'held' || !!gateDecision;
+
+  const isComplete =
+    phaseStatus === 'complete' ||
+    phaseStatus === 'held' ||
+    !!gateDecision;
+
   const isRunning = phaseStatus === 'running';
-  const notStarted = !phaseStatus || phaseStatus === 'pending';
+
+  const notStarted =
+    !phaseStatus ||
+    phaseStatus === 'pending';
 
   useEffect(() => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     if (notStarted) {
       runPhase(phase.id);
     }
+
   }, [phase.id]);
 
   return (
+
     <div className="phase-container container">
+
       <PhaseHeader phase={phase} />
+
+    
 
       <AgentGrid
         phase={phase}
@@ -41,7 +61,11 @@ export default function PhaseContainer({
 
       <DeliverablesPanel phase={phase} />
 
-      {(isComplete || (isRunning && outputs && Object.keys(outputs).length > 0)) && (
+      {(isComplete ||
+        (isRunning &&
+          outputs &&
+          Object.keys(outputs).length > 0)) && (
+
         <PhaseGate
           phase={phase}
           gateDecision={gateDecision}
@@ -50,7 +74,9 @@ export default function PhaseContainer({
           onRerun={() => onRerun(phase.id)}
           isReadOnly={isReadOnly}
         />
+
       )}
+
     </div>
   );
 }

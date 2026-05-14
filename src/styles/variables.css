@@ -1,46 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap');
 
 :root {
-  /* Background */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fb;
-  --bg-tertiary: #f1f3f7;
 
-  /* Text */
-  --text-primary: #0d0f12;
-  --text-secondary: #4a5166;
-  --text-muted: #8b92a5;
+  /* =======================================================
+     PRIMARY BRAND
+  ======================================================= */
 
-  /* Brand accent */
-  --accent: #2563eb;
-  --accent-light: #eff4ff;
-  --accent-hover: #1d4ed8;
+  --primary-navy: #183B63;
+  --primary-navy-dark: #102945;
 
-  /* Agent colors */
-  --agent-requirement: #7c3aed;
-  --agent-design: #2563eb;
-  --agent-test: #059669;
-  --agent-manufacturing: #d97706;
-  --agent-supply-chain: #dc2626;
-  --agent-risk: #db2777;
-  --agent-program: #0891b2;
-  --agent-knowledge: #65a30d;
+  --accent-gold: #B58B44;
 
-  /* Borders */
-  --border: #e4e7ef;
-  --border-strong: #c9cfe0;
+  /* =======================================================
+     BACKGROUNDS
+  ======================================================= */
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.06);
+  --bg-main: #F5F3EF;
+  --bg-card: #FAF8F4;
+  --bg-secondary-card: #F8F5EF;
 
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  /* OLD VARIABLE SUPPORT */
 
-  /* Transitions */
-  --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-primary: #F5F3EF;
+  --bg-secondary: #FAF8F4;
+  --bg-tertiary: #F8F5EF;
+  --bg-hover: #F1ECE4;
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
+
+  --text-primary: #1D2B3F;
+  --text-secondary: #6B7280;
+  --text-muted: #7B7B7B;
+
+  /* =======================================================
+     BORDERS
+  ======================================================= */
+
+  --border-main: #DDD6CC;
+  --border-soft: #E7DFD4;
+  --border-divider: #D9D1C5;
+
+  /* OLD VARIABLE SUPPORT */
+
+  --border: #E7DFD4;
+  --border-strong: #D9D1C5;
+
+  /* =======================================================
+     ACCENTS
+  ======================================================= */
+
+  --accent: #B58B44;
+  --accent-light: rgba(181, 139, 68, 0.12);
+  --accent-hover: #9C763A;
+
+  --cyan: #3B82F6;
+  --green: #22C55E;
+  --red: #EF4444;
+
+  /* =======================================================
+     STATUS COLORS
+  ======================================================= */
+
+  --success-green: #22C55E;
+  --success-bg: #DCFCE7;
+  --success-text: #15803D;
+
+  --warning-bg: #FEF3C7;
+  --warning-text: #B45309;
+
+  --danger-bg: #FEE2E2;
+  --danger-text: #B91C1C;
+
+  /* =======================================================
+     AGENT COLORS
+  ======================================================= */
+
+  --agent-requirement: #B58B44;
+  --agent-design: #3B82F6;
+  --agent-test: #22C55E;
+  --agent-manufacturing: #F97316;
+  --agent-supply-chain: #EF4444;
+  --agent-risk: #DC2626;
+  --agent-program: #6366F1;
+  --agent-knowledge: #84CC16;
+
+  /* =======================================================
+     SHADOWS
+  ======================================================= */
+
+  --shadow-sm:
+    0 2px 8px rgba(15, 23, 42, 0.05);
+
+  --shadow-md:
+    0 8px 24px rgba(15, 23, 42, 0.08);
+
+  --shadow-lg:
+    0 18px 40px rgba(15, 23, 42, 0.10);
+
+  --glow-amber:
+    0 0 0 rgba(0,0,0,0);
+
+  /* =======================================================
+     RADIUS
+  ======================================================= */
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 36px;
+
+  /* =======================================================
+     TYPOGRAPHY
+  ======================================================= */
+
+  --font-main: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* =======================================================
+     TRANSITIONS
+  ======================================================= */
+
+  --transition:
+    0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
 }

@@ -7,7 +7,7 @@ export default function DeliverablesPanel({ phase }) {
       <ul className="deliverables-panel__list">
         {phase.deliverables.map((item, i) => (
           <li key={i} className="deliverables-panel__item">
-            <span className="deliverables-panel__icon">📄</span>
+            <span className="deliverables-panel__icon"></span>
             <span>{item}</span>
           </li>
         ))}

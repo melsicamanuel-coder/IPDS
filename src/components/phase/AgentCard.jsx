@@ -1,59 +1,127 @@
-import MarkdownRenderer from '../shared/MarkdownRenderer';
+import ReactMarkdown from 'react-markdown';
+
 import './AgentCard.css';
 
-function SkeletonLines() {
-  return (
-    <div className="agent-card__skeleton">
-      {[90, 75, 85, 60, 80, 70].map((w, i) => (
-        <div
-          key={i}
-          className="skeleton-line"
-          style={{ width: `${w}%`, animationDelay: `${i * 0.08}s` }}
-        />
-      ))}
-    </div>
-  );
-}
+export default function AgentCard({
 
-export default function AgentCard({ agent, isLoading, content, error, isReduced }) {
+  agent,
+
+  loading,
+
+  output,
+
+  error,
+
+  reduced,
+
+}) {
+
+  const safeOutput =
+
+    typeof output === 'string'
+      ? output
+      : 'No output generated.';
+
   return (
-    <div
-      className={`agent-card ${isReduced ? 'agent-card--reduced' : ''} ${error ? 'agent-card--error' : ''}`}
-      style={{ '--agent-color': agent.color }}
-    >
+
+    <div className="agent-card">
+
       <div className="agent-card__header">
+
         <div className="agent-card__header-left">
-          <span className="agent-card__dot" />
-          <span className="agent-card__icon">{agent.icon}</span>
-          <span className="agent-card__name">{agent.name}</span>
+
+          <div
+
+            className="agent-card__dot"
+
+            style={{
+
+              '--agent-color':
+                agent.color || '#B58B44',
+
+            }}
+
+          />
+
+          <div className="agent-card__name">
+
+            {agent.name}
+
+          </div>
+
         </div>
-        {isReduced && (
-          <span className="agent-card__reduced-badge">Reduced</span>
+
+        {loading && (
+
+          <div className="agent-card__loading-badge">
+
+            Generating
+
+          </div>
+
         )}
-        {isLoading && (
-          <span className="agent-card__loading-badge">
-            <span className="loading-dot" />
-            Running
-          </span>
+
+        {!loading && reduced && (
+
+          <div className="agent-card__reduced-badge">
+
+            Reduced Capacity
+
+          </div>
+
         )}
+
       </div>
 
       <div className="agent-card__body">
-        {isLoading && <SkeletonLines />}
-        {!isLoading && error && (
-          <div className="agent-card__error">
-            <span>⚠️</span>
-            <span>Agent unavailable: {error}</span>
+
+        {loading && (
+
+          <div className="agent-card__skeleton">
+
+            <div className="skeleton-line" />
+            <div className="skeleton-line" />
+            <div className="skeleton-line" />
+            <div className="skeleton-line" />
+
           </div>
+
         )}
-        {!isLoading && !error && content && (
-          <MarkdownRenderer content={content} />
+
+        {!loading && error && (
+
+          <div className="agent-card__error">
+
+            {error}
+
+          </div>
+
         )}
+
+        {!loading && !error && (
+
+          <div className="agent-markdown">
+
+            <ReactMarkdown>
+
+              {safeOutput}
+
+            </ReactMarkdown>
+
+          </div>
+
+        )}
+
       </div>
 
       <div className="agent-card__footer">
-        {agent.role}
+
+        {agent.department || 'IPDS Agent'}
+
       </div>
+
     </div>
+
   );
+
 }

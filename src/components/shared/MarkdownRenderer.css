@@ -1,87 +1,208 @@
 .markdown-body {
-  font-size: 0.875rem;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--text-primary);
 }
+
+/* HEADINGS */
 
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4 {
-  font-size: 0.875rem;
   font-weight: 700;
-  margin-top: 12px;
-  margin-bottom: 4px;
   color: var(--text-primary);
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
-.markdown-body h1 { font-size: 1rem; }
-.markdown-body h2 { font-size: 0.9375rem; }
+.markdown-body h1 {
+  font-size: 1.6rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.35rem;
+}
+
+.markdown-body h3 {
+  font-size: 1.1rem;
+}
+
+.markdown-body h4 {
+  font-size: 1rem;
+}
+
+/* TEXT */
 
 .markdown-body p {
-  margin: 6px 0;
+  margin: 10px 0;
+  color: var(--text-secondary);
 }
 
 .markdown-body ul,
 .markdown-body ol {
-  margin: 6px 0;
-  padding-left: 18px;
+  margin: 10px 0;
+  padding-left: 24px;
 }
 
 .markdown-body li {
-  margin: 3px 0;
-}
-
-.markdown-body strong {
-  font-weight: 600;
-}
-
-.markdown-body code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8125rem;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1px 5px;
-}
-
-.markdown-body pre {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  overflow-x: auto;
-  margin: 8px 0;
-}
-
-.markdown-body pre code {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.markdown-body blockquote {
-  border-left: 3px solid var(--border-strong);
-  margin: 8px 0;
-  padding-left: 12px;
+  margin: 6px 0;
   color: var(--text-secondary);
 }
 
-.markdown-body table {
+.markdown-body strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* CODE */
+
+.markdown-body code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(24, 59, 99, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.markdown-body pre {
+  background: rgba(24, 59, 99, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 18px 0;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* BLOCKQUOTE */
+
+.markdown-body blockquote {
+  border-left: 4px solid var(--accent-gold);
+  padding-left: 16px;
+  margin: 18px 0;
+  color: var(--text-secondary);
+}
+
+/* TABLE */
+
+.markdown-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8125rem;
-  margin: 8px 0;
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--bg-card);
 }
 
-.markdown-body th,
-.markdown-body td {
-  border: 1px solid var(--border);
-  padding: 6px 10px;
+/* TABLE HEADER */
+
+.markdown-table th {
+
+  background: rgba(24, 59, 99, 0.08);
+
+  color: var(--primary-navy);
+
+  padding: 16px;
+
   text-align: left;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  border-bottom: 1px solid var(--border-main);
 }
 
-.markdown-body th {
-  background: var(--bg-tertiary);
+/* TABLE BODY */
+
+.markdown-table td {
+
+  padding: 14px;
+
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+
+  font-size: 14px;
+
+  color: var(--text-primary);
+
+  transition: 0.2s ease;
+}
+
+.markdown-table tr:hover td {
+  background: rgba(24, 59, 99, 0.03);
+}
+
+/* LOW */
+
+.risk-score-low,
+.risk-level-low {
+
+  background: #DCFCE7 !important;
+  color: #15803D !important;
+  font-weight: 700;
+}
+
+/* MEDIUM */
+
+.risk-score-medium,
+.risk-level-medium {
+
+  background: #FEF3C7 !important;
+  color: #B45309 !important;
+  font-weight: 700;
+}
+
+/* HIGH */
+
+.risk-score-high {
+
+  background: #FED7AA !important;
+  color: #C2410C !important;
+  font-weight: 700;
+}
+
+/* CRITICAL */
+
+.risk-score-critical,
+.risk-level-high {
+
+  background: #FEE2E2 !important;
+  color: #B91C1C !important;
+  font-weight: 700;
+}
+/* FULL ROW COLORS */
+
+.risk-row-low td {
+
+  background: #DCFCE7 !important;
+  color: #15803D !important;
   font-weight: 600;
+
+}
+
+.risk-row-medium td {
+
+  background: #FEF3C7 !important;
+  color: #B45309 !important;
+  font-weight: 600;
+
+}
+
+.risk-row-high td {
+
+  background: #FED7AA !important;
+  color: #C2410C !important;
+  font-weight: 600;
+
+}
+
+.risk-row-critical td {
+
+  background: #FEE2E2 !important;
+  color: #B91C1C !important;
+  font-weight: 700;
+
 }

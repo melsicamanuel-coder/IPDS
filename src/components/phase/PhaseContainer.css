@@ -1,4 +1,19 @@
 .phase-container {
-  padding-top: 36px;
-  padding-bottom: 60px;
+
+  width: 100%;
+
+  height: auto;
+
+  overflow: visible;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 32px;
+
+  box-sizing: border-box;
+
 }

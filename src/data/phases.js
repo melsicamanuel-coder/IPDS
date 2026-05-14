@@ -3,7 +3,7 @@ export const PHASES = [
     id: 1,
     name: 'Requirements',
     subtitle: 'Requirements',
-    emoji: '📋',
+    emoji: '',
     objective: 'Elicit, structure, and baseline all product requirements — functional, non-functional, and interface.',
     inputs: ['Product description', 'User needs', 'Stakeholder goals'],
     gateCriteria: [
@@ -25,7 +25,7 @@ export const PHASES = [
     id: 2,
     name: 'Design',
     subtitle: 'Design',
-    emoji: '✏️',
+    emoji: '',
     objective: 'Generate architectural options, evaluate trade-offs, and produce the recommended system design.',
     inputs: ['Requirements Specification', 'Technical constraints', 'Platform options'],
     gateCriteria: [
@@ -47,7 +47,7 @@ export const PHASES = [
     id: 3,
     name: 'Test',
     subtitle: 'Test',
-    emoji: '🧪',
+    emoji: '',
     objective: 'Develop the Master Test Plan, define acceptance criteria, and map the certification path.',
     inputs: ['Requirements Specification', 'System Architecture', 'Regulatory landscape'],
     gateCriteria: [
@@ -69,7 +69,7 @@ export const PHASES = [
     id: 4,
     name: 'Manufacturing',
     subtitle: 'Manufacturing',
-    emoji: '🏭',
+    emoji: '',
     objective: 'Assess manufacturability, define build documentation, and plan the production ramp.',
     inputs: ['System Architecture', 'Requirements', 'Target volume and cost'],
     gateCriteria: [
@@ -91,7 +91,7 @@ export const PHASES = [
     id: 5,
     name: 'Supply Chain',
     subtitle: 'Supply Chain',
-    emoji: '🔗',
+    emoji: '',
     objective: 'Identify key components, assess lifecycle health, qualify suppliers, and define the sourcing strategy.',
     inputs: ['System Architecture', 'BOM candidates', 'Target volume and cost'],
     gateCriteria: [
@@ -113,7 +113,7 @@ export const PHASES = [
     id: 6,
     name: 'Risk Predictions',
     subtitle: 'Risk',
-    emoji: '⚠️',
+    emoji: '',
     objective: 'Build the full Risk Register, score all risks, and define mitigation strategies.',
     inputs: ['All prior phase outputs', 'Technical and market context', 'Regulatory environment'],
     gateCriteria: [
@@ -135,7 +135,7 @@ export const PHASES = [
     id: 7,
     name: 'Program Manager',
     subtitle: 'Program Mgmt',
-    emoji: '📅',
+    emoji: '',
     objective: 'Define the complete program plan: WBS, integrated schedule, budget, and launch readiness.',
     inputs: ['All prior phase outputs', 'Resource constraints', 'Business case targets'],
     gateCriteria: [

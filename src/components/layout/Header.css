@@ -1,76 +1,130 @@
 .header {
+
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+
+  width: 100%;
+
+  background: rgba(250, 248, 244, 0.92);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid var(--border-main);
+
 }
 
 .header__inner {
+
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 18px 32px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+
 }
 
 .header__brand {
+
   display: flex;
   align-items: center;
-  gap: 8px;
+
+  gap: 16px;
+
 }
 
 .header__logo {
-  font-size: 1.375rem;
-  color: var(--accent);
-  line-height: 1;
-}
 
-.header__wordmark {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
+  width: 42px;
+  height: 42px;
 
-.header__tagline {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  padding-left: 10px;
-  border-left: 1px solid var(--border);
-  margin-left: 4px;
-}
+  border-radius: 14px;
 
-@media (max-width: 600px) {
-  .header__tagline {
-    display: none;
-  }
-}
-
-.header__product {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 5px 12px;
-  max-width: 400px;
+  justify-content: center;
+
+  background: rgba(181, 139, 68, 0.12);
+
+  border: 1px solid rgba(181, 139, 68, 0.25);
+
+  color: var(--accent-gold);
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
 }
 
-.header__product-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
+.header__title {
+
+  display: flex;
+  flex-direction: column;
+
 }
 
-.header__product-desc {
-  font-size: 0.8125rem;
+.header__title-main {
+
+  color: var(--text-primary);
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+
+}
+
+.header__title-sub {
+
   color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  font-size: 0.78rem;
+
+  margin-top: 2px;
+
+}
+
+.header__meta {
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+.header__badge {
+
+  background: rgba(181, 139, 68, 0.10);
+
+  border: 1px solid rgba(181, 139, 68, 0.18);
+
+  color: var(--accent-gold);
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+}
+
+@media (max-width: 768px) {
+
+  .header__inner {
+
+    padding: 16px 18px;
+
+  }
+
+  .header__title-sub {
+
+    display: none;
+
+  }
+
 }
