@@ -36,6 +36,8 @@ export default function App() {
 
     runPhase,
 
+    generateSummary,
+
     confirmGate,
 
     holdGate,
@@ -71,6 +73,8 @@ export default function App() {
     phaseStatus,
 
     gateDecisions,
+
+    summaryOutput,
 
   } = state;
 
@@ -164,42 +168,90 @@ export default function App() {
           />
 
           <PhaseContainer
-            phase={currentPhaseData}
-            phaseStatus={
-              phaseStatus[currentPhase]
-            }
-            loadingAgents={
-              phaseLoadingAgents[
-                currentPhase
-              ] || {}
-            }
-            outputs={
-              phaseOutputs[
-                currentPhase
-              ] || {}
-            }
-            errors={
-              phaseErrors[
-                currentPhase
-              ] || {}
-            }
-            gateDecision={
-              gateDecisions[
-                currentPhase
-              ]
-            }
-            onConfirm={confirmGate}
-            onHold={holdGate}
-            onRerun={rerunPhase}
-            runPhase={runPhase}
-          />
+  phase={currentPhaseData}
+  phaseStatus={
+    phaseStatus[currentPhase]
+  }
+  loadingAgents={
+    phaseLoadingAgents[
+      currentPhase
+    ] || {}
+  }
+  outputs={
+    phaseOutputs[
+      currentPhase
+    ] || {}
+  }
+  errors={
+    phaseErrors[
+      currentPhase
+    ] || {}
+  }
+  gateDecision={
+    gateDecisions[
+      currentPhase
+    ]
+  }
+  onConfirm={confirmGate}
+  onHold={holdGate}
+  onRerun={rerunPhase}
+  runPhase={runPhase}
+/>
 
-        </>
+{currentPhase === 7 && (
 
-      )}
+  <div
+    style={{
+      padding: '20px',
+      marginTop: '20px',
+    }}
+  >
 
-    </div>
+    <button
+      onClick={generateSummary}
+      style={{
+        padding: '12px 24px',
+        cursor: 'pointer',
+      }}
+    >
+      Generate Final Report
+    </button>
 
-  );
+    {summaryOutput && (
 
+      <div
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          background: '#fff',
+        }}
+      >
+
+        <h2>Final Product Report</h2>
+
+        <pre
+          style={{
+            whiteSpace: 'pre-wrap',
+          }}
+        >
+          {summaryOutput}
+        </pre>
+
+      </div>
+
+    )}
+
+  </div>
+
+)}
+
+</>
+
+)}
+
+</div>
+
+);
 }

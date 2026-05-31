@@ -6,7 +6,7 @@ import { PHASES } from '../data/phases';
 
 import { getPrompt } from '../data/prompts';
 
-const GROQ_API_KEY = 'enter your api key';
+const GROQ_API_KEY = 'GROQ_KEY_REMOVED';
 
 const initialState = {
 
@@ -19,6 +19,8 @@ const initialState = {
   classification: null,
 
   currentPhase: 1,
+
+  summaryOutput: '',
 
   phaseOutputs: {},
 
@@ -47,6 +49,16 @@ function reducer(state, action) {
         ...state,
 
         step: 'product-input',
+
+      };
+
+    case 'SET_SUMMARY':
+
+      return {
+
+       ...state,
+    
+       summaryOutput: action.payload,
 
       };
 
@@ -427,6 +439,11 @@ Return ONLY valid json.
 
     try {
 
+      console.log(
+        "Classification API Key:",
+        apiKey
+      );
+
       const result = await callGroqJSON(
         apiKey,
         systemPrompt,
@@ -536,14 +553,10 @@ Return ONLY valid json.
 
         );
 
-        const result = await callGroq(
-
+        const result = await callGroqJSON(
           state.apiKey,
-
           systemPrompt,
-
-          `Product: ${state.productDescription}`
-
+          state.productDescription
         );
 
         const content =
@@ -605,6 +618,55 @@ Return ONLY valid json.
     state.phaseOutputs,
 
   ]);
+
+const generateSummary = useCallback(async () => {
+  try {
+    const allOutputs = Object.entries(state.phaseOutputs)
+      .map(([phaseId, outputs]) => {
+        const phaseContent = Object.entries(outputs)
+          .map(([agentId, content]) => `${agentId}:\n${content}`)
+          .join('\n\n');
+
+        return `Phase ${phaseId}\n\n${phaseContent}`;
+      })
+      .join('\n\n');
+
+    const systemPrompt = `
+You are a Senior Integrated Product Development (IPDS) Expert.
+
+Analyze all phase outputs and generate:
+1. Executive Summary
+2. Product Overview
+3. Design Summary
+4. Testing Assessment
+5. Manufacturing Readiness
+6. Supply Chain Assessment
+7. Risk Assessment
+8. Program Management Summary
+9. Recommendations
+10. Overall Readiness Score (0-100)
+
+Generate a professional report in markdown format.
+`;
+
+    const result = await callGroq(
+      state.apiKey,
+      systemPrompt,
+      allOutputs
+    );
+
+    dispatch({
+      type: 'SET_SUMMARY',
+      payload: result,
+    });
+
+  } catch (err) {
+    dispatch({
+      type: 'SET_SUMMARY',
+      payload: `Summary generation failed: ${err.message}`,
+    });
+  }
+}, [state.phaseOutputs, state.apiKey]);
 
   const confirmGate = useCallback(async (
     phaseId
@@ -671,6 +733,8 @@ Return ONLY valid json.
     classify,
 
     runPhase,
+
+    generateSummary,
 
     confirmGate,
 
