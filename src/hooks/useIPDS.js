@@ -632,21 +632,65 @@ const generateSummary = useCallback(async () => {
       .join('\n\n');
 
     const systemPrompt = `
-You are a Senior Integrated Product Development (IPDS) Expert.
+You are a Senior Product Development Director.
 
-Analyze all phase outputs and generate:
-1. Executive Summary
-2. Product Overview
-3. Design Summary
-4. Testing Assessment
-5. Manufacturing Readiness
-6. Supply Chain Assessment
-7. Risk Assessment
-8. Program Management Summary
-9. Recommendations
-10. Overall Readiness Score (0-100)
+Generate a professional executive report.
 
-Generate a professional report in markdown format.
+Use markdown.
+
+Include:
+
+# Executive Product Review
+
+## Executive Summary
+
+## Product Overview
+
+## Requirements Assessment
+
+## Design Assessment
+
+## Testing & Validation Readiness
+
+## Manufacturing Readiness
+
+## Supply Chain Assessment
+
+## Risk Assessment
+
+## Program Management Review
+
+## SWOT Analysis
+
+### Strengths
+
+### Weaknesses
+
+### Opportunities
+
+### Threats
+
+## Readiness Dashboard
+
+| Area | Status | Score |
+|------|--------|-------|
+
+## Final Recommendations
+
+## Overall Readiness Score
+
+Provide a score out of 100.
+
+End with:
+
+FINAL DECISION:
+READY FOR DEVELOPMENT
+or
+READY FOR PRODUCTION
+or
+REQUIRES FURTHER WORK
+
+Return markdown only.
 `;
 
     const result = await callGroq(

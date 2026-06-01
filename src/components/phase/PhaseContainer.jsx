@@ -4,6 +4,7 @@ import AgentGrid from './AgentGrid';
 import DeliverablesPanel from './DeliverablesPanel';
 import PhaseGate from './PhaseGate';
 import './PhaseContainer.css';
+import SummaryPanel from './SummaryPanel';
 
 export default function PhaseContainer({
   phase,
@@ -16,6 +17,8 @@ export default function PhaseContainer({
   onHold,
   onRerun,
   runPhase,
+  summaryOutput,
+  generateSummary,
 }) {
 
   const isReadOnly = !!gateDecision;
@@ -53,30 +56,39 @@ export default function PhaseContainer({
     
 
       <AgentGrid
-        phase={phase}
-        loadingAgents={loadingAgents || {}}
-        outputs={outputs || {}}
-        errors={errors || {}}
-      />
+  phase={phase}
+  loadingAgents={loadingAgents || {}}
+  outputs={outputs || {}}
+  errors={errors || {}}
+/>
 
-      <DeliverablesPanel phase={phase} />
+<DeliverablesPanel phase={phase} />
 
-      {(isComplete ||
-        (isRunning &&
-          outputs &&
-          Object.keys(outputs).length > 0)) && (
+{phase.id === 7 && (
 
-        <PhaseGate
-          phase={phase}
-          gateDecision={gateDecision}
-          onConfirm={() => onConfirm(phase.id)}
-          onHold={(note) => onHold(phase.id, note)}
-          onRerun={() => onRerun(phase.id)}
-          isReadOnly={isReadOnly}
-        />
+  <SummaryPanel
+    summaryOutput={summaryOutput}
+    onGenerate={generateSummary}
+  />
 
-      )}
+)}
+
+{(isComplete ||
+  (isRunning &&
+    outputs &&
+    Object.keys(outputs).length > 0)) && (
+
+  <PhaseGate
+    phase={phase}
+    gateDecision={gateDecision}
+    onConfirm={() => onConfirm(phase.id)}
+    onHold={(note) => onHold(phase.id, note)}
+    onRerun={() => onRerun(phase.id)}
+    isReadOnly={isReadOnly}
+  />
+
+)}
 
     </div>
-  );
-}
+  )}
+

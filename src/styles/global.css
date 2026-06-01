@@ -42,3 +42,211 @@ body {
   margin: 0 auto;
 
 }
+
+.summary-report {
+
+  padding: 32px;
+
+  line-height: 1.8;
+
+  color: #24324b;
+
+}
+
+.summary-report h1 {
+
+  font-size: 32px;
+
+  margin-bottom: 24px;
+
+  color: #1d3557;
+
+}
+
+.summary-report h2 {
+
+  font-size: 24px;
+
+  margin-top: 32px;
+
+  margin-bottom: 16px;
+
+  color: #1d3557;
+
+  border-bottom: 2px solid #e7d3a1;
+
+  padding-bottom: 8px;
+
+}
+
+.summary-report h3 {
+
+  font-size: 20px;
+
+  margin-top: 24px;
+
+  color: #2f4f6f;
+
+}
+
+.summary-report p {
+
+  margin-bottom: 16px;
+
+}
+
+.summary-report ul {
+
+  padding-left: 24px;
+
+}
+
+.summary-report li {
+
+  margin-bottom: 8px;
+
+}
+
+.summary-report strong {
+
+  color: #b88b3b;
+
+}
+
+.summary-banner {
+
+  padding: 24px;
+
+  background: #f9f5eb;
+
+  border-bottom: 1px solid #e7d3a1;
+
+  border-radius: 12px 12px 0 0;
+
+}
+
+.summary-banner h2 {
+
+  margin: 0;
+
+  color: #1d3557;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+}
+
+.summary-banner p {
+
+  margin-top: 8px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+}
+
+.summary-btn {
+
+  background: linear-gradient(
+    135deg,
+    #1d3557,
+    #2f4f6f
+  );
+
+  color: white;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 14px 28px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.15);
+
+}
+
+.summary-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.2);
+
+}
+
+.summary-btn:active {
+
+  transform: translateY(0);
+
+}
+
+.summary-report table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin: 20px 0;
+
+}
+
+.summary-report table th {
+
+  background: #f5f7fa;
+
+  text-align: left;
+
+  padding: 12px;
+
+  border: 1px solid #ddd;
+
+}
+
+.summary-report table td {
+
+  padding: 12px;
+
+  border: 1px solid #ddd;
+
+}
+
+.summary-report blockquote {
+
+  border-left: 4px solid #b88b3b;
+
+  padding-left: 16px;
+
+  margin-left: 0;
+
+  color: #555;
+
+}
+
+.summary-report code {
+
+  background: #f4f4f4;
+
+  padding: 2px 6px;
+
+  border-radius: 4px;
+
+}
+
+.summary-report {
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+}

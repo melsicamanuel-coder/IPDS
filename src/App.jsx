@@ -20,6 +20,10 @@ import PhaseContainer from './components/phase/PhaseContainer';
 
 import './styles/global.css';
 
+import ReactMarkdown from 'react-markdown';
+
+import remarkGfm from 'remark-gfm';
+
 export default function App() {
 
   const {
@@ -167,91 +171,73 @@ export default function App() {
             onNavigate={navigateToPhase}
           />
 
-          <PhaseContainer
-  phase={currentPhaseData}
-  phaseStatus={
-    phaseStatus[currentPhase]
-  }
-  loadingAgents={
-    phaseLoadingAgents[
-      currentPhase
-    ] || {}
-  }
-  outputs={
-    phaseOutputs[
-      currentPhase
-    ] || {}
-  }
-  errors={
-    phaseErrors[
-      currentPhase
-    ] || {}
-  }
-  gateDecision={
-    gateDecisions[
-      currentPhase
-    ]
-  }
-  onConfirm={confirmGate}
-  onHold={holdGate}
-  onRerun={rerunPhase}
-  runPhase={runPhase}
-/>
+          <>
+            <PhaseContainer
+              phase={currentPhaseData}
+              phaseStatus={phaseStatus[currentPhase]}
+              loadingAgents={phaseLoadingAgents[currentPhase] || {}}
+              outputs={phaseOutputs[currentPhase] || {}}
+              errors={phaseErrors[currentPhase] || {}}
+              gateDecision={gateDecisions[currentPhase]}
+              onConfirm={confirmGate}
+              onHold={holdGate}
+              onRerun={rerunPhase}
+              runPhase={runPhase}
+            />
 
-{currentPhase === 7 && (
+            {currentPhase === 7 && (
+              <div className="phase-container container">
+                <div
+                  className="agent-card-header"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '20px 24px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '12px',
+                      height: '12px',
+                      minWidth: '12px',
+                      borderRadius: '50%',
+                      background: '#6c63ff',
+                    }}
+                  />
 
-  <div
-    style={{
-      padding: '20px',
-      marginTop: '20px',
-    }}
-  >
+                  <h3>Executive Summary AI</h3>
+                </div>
+{!summaryOutput && (
+                  <div style={{ padding: '24px', textAlign: 'center' }}>
+                    <button className="summary-btn" onClick={generateSummary}>
+                      Generate Executive Summary
+                    </button>
+                  </div>
+                )}
+                {summaryOutput && (
+                  <>
+                    <div className="summary-banner">
+                      <h2>Integrated Product Development Report</h2>
+                      <p>Executive Review & Launch Readiness Assessment</p>
+                    </div>
 
-    <button
-      onClick={generateSummary}
-      style={{
-        padding: '12px 24px',
-        cursor: 'pointer',
-      }}
-    >
-      Generate Final Report
-    </button>
+                    <div style={{ padding: '24px' }}>
+                      <div className="summary-report">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{summaryOutput}</ReactMarkdown>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </>
 
-    {summaryOutput && (
+        </>
 
-      <div
-        style={{
-          marginTop: '20px',
-          padding: '20px',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
-          background: '#fff',
-        }}
-      >
+      )}
 
-        <h2>Final Product Report</h2>
+    </div>
 
-        <pre
-          style={{
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {summaryOutput}
-        </pre>
-
-      </div>
-
-    )}
-
-  </div>
-
-)}
-
-</>
-
-)}
-
-</div>
-
-);
+  );
 }
