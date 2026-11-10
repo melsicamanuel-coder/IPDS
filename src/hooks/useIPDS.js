@@ -6,7 +6,7 @@ import { PHASES } from '../data/phases';
 
 import { getPrompt } from '../data/prompts';
 
-const GROQ_API_KEY = 'GROQ_KEY_REMOVED';
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 const initialState = {
 
@@ -553,19 +553,11 @@ Return ONLY valid json.
 
         );
 
-        const result = await callGroqJSON(
+        const content = await callGroq(
           state.apiKey,
           systemPrompt,
           state.productDescription
         );
-
-        const content =
-
-          typeof result === 'string'
-
-            ? result
-
-            : JSON.stringify(result);
 
         dispatch({
 

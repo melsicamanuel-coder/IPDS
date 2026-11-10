@@ -49,7 +49,7 @@ ${previousOutputs}
 
     1: {
 
-      requirements: `
+      requirement: `
 
 You are a Requirements Engineering Agent.
 
@@ -59,32 +59,6 @@ Generate:
 - Non-functional requirements
 - Product goals
 - Technical assumptions
-
-`,
-
-      risk: `
-
-You are a Risk Assessment Agent.
-
-Identify:
-
-- Technical risks
-- Delivery risks
-- Compliance concerns
-
-Provide mitigation.
-
-`,
-
-      program: `
-
-You are a Program Management Agent.
-
-Generate:
-
-- Milestones
-- Timeline assumptions
-- Team dependencies
 
 `,
 
@@ -111,30 +85,6 @@ Generate:
 
 `,
 
-      manufacturing: `
-
-You are a Manufacturing Planning Agent.
-
-Generate:
-
-- Feasibility
-- Sourcing
-- Scalability
-
-`,
-
-      risk: `
-
-You are a Design Risk Agent.
-
-Identify:
-
-- Integration risks
-- Reliability concerns
-- Scalability issues
-
-`,
-
     },
 
     /*
@@ -145,7 +95,7 @@ Identify:
 
     3: {
 
-      testing: `
+      test: `
 
 You are a Testing Agent.
 
@@ -154,18 +104,6 @@ Generate:
 - QA strategy
 - Validation tests
 - Reliability testing
-
-`,
-
-      risk: `
-
-You are a QA Risk Agent.
-
-Identify:
-
-- Failure scenarios
-- Validation gaps
-- Security concerns
 
 `,
 
@@ -191,18 +129,6 @@ Generate:
 
 `,
 
-      supply: `
-
-You are a Supply Chain Agent.
-
-Generate:
-
-- Supplier dependencies
-- Logistics planning
-- Procurement concerns
-
-`,
-
     },
 
     /*
@@ -213,27 +139,17 @@ Generate:
 
     5: {
 
-      supply: `
+      'supply-chain': `
 
-You are a Supply Optimization Agent.
+You are a Supply Chain Optimization Agent.
 
 Generate:
 
 - Vendor optimization
 - Cost optimization
 - Distribution planning
-
-`,
-
-      risk: `
-
-You are a Supply Risk Agent.
-
-Identify:
-
-- Vendor risks
-- Logistics risks
-- Supply bottlenecks
+- Supplier dependencies
+- Logistics planning
 
 `,
 
@@ -256,18 +172,8 @@ Generate:
 - Strategic risks
 - Regulatory concerns
 - Operational risks
-
-`,
-
-      program: `
-
-You are an Executive Review Agent.
-
-Generate:
-
-- Readiness assessment
-- Coordination concerns
-- Operational observations
+- Risk register with probability and impact scores
+- Mitigation strategies
 
 `,
 
@@ -283,25 +189,16 @@ Generate:
 
       program: `
 
-You are a Final Lifecycle Review Agent.
+You are a Program Manager and Final Lifecycle Review Agent.
 
 Generate:
 
 - Executive overview
+- Work breakdown structure
+- Integrated schedule
+- Budget estimate
 - Readiness summary
-- Deployment considerations
-
-`,
-
-      risk: `
-
-You are a Final Risk Approval Agent.
-
-Generate:
-
-- Residual risks
-- Critical blockers
-- Launch concerns
+- Launch readiness checklist
 
 `,
 
@@ -325,9 +222,8 @@ ${baseContext}
 
 IMPORTANT:
 
-- Use markdown tables
-- Keep responses concise
-- Maximum 120 tokens
+- Use markdown tables where appropriate
+- Keep responses concise but thorough
 - No markdown code blocks
 
 Example table:
