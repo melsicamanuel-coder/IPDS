@@ -1,5 +1,17 @@
-const GROQ_API_KEY =
-  import.meta.env.VITE_GROQ_API_KEY;
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+const IS_DEV = import.meta.env.DEV;
+
+const GROQ_URL = IS_DEV
+  ? '/api/groq/openai/v1/chat/completions'
+  : '/api/groq';
+
+function getHeaders() {
+  const headers = { 'Content-Type': 'application/json' };
+  if (IS_DEV && GROQ_API_KEY) {
+    headers['Authorization'] = `Bearer ${GROQ_API_KEY}`;
+  }
+  return headers;
+}
 
 export async function callGroq(
   apiKey,
@@ -7,13 +19,10 @@ export async function callGroq(
   userMessage
 ) {
   const response = await fetch(
-    '/api/groq/openai/v1/chat/completions',
+    GROQ_URL,
     {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(),
       body: JSON.stringify({
         model: 'qwen/qwen3.8-27b',
         messages: [
@@ -39,8 +48,6 @@ export async function callGroq(
   }
 
   const data = await response.json();
-  console.log('GROQ RESPONSE:', data);
-
   const msg = data?.choices?.[0]?.message;
   return msg?.content || msg?.reasoning_content || 'No output generated.';
 }
@@ -51,13 +58,10 @@ export async function callGroqJSON(
   userMessage
 ) {
   const response = await fetch(
-    '/api/groq/openai/v1/chat/completions',
+    GROQ_URL,
     {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(),
       body: JSON.stringify({
         model: 'qwen/qwen3.8-27b',
         messages: [
@@ -86,7 +90,6 @@ export async function callGroqJSON(
   }
 
   const data = await response.json();
-  console.log('GROQ JSON RESPONSE:', data);
 
   try {
     const msg = data?.choices?.[0]?.message;
